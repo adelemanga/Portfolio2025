@@ -13,3 +13,5 @@ COPY next-env.d.ts ./next-env.d.ts
 COPY *.config.js ./
 
 CMD npm run dev
+
+RUN npm run vercel-build

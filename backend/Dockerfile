@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm i
 
+RUN npm run vercel-build
+
 COPY src ./src
 COPY tsconfig.json ./tsconfig.json
 
