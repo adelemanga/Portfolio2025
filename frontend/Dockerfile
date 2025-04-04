@@ -14,4 +14,3 @@ COPY *.config.js ./
 
 CMD npm run dev
 
-RUN npm run vercel-build

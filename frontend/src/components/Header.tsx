@@ -24,19 +24,19 @@ export default function Header() {
         <nav className="nav0">
           <ul>
             <li className="nav1">
-              <Link href="/">Home🏠</Link>
+              <Link href="/">Accueil🏠</Link>
             </li>
             <li className="nav1">
-              <Link href="/about">About Me🙋🏽‍♀️🫱🏾‍🫲🏽</Link>
+              <Link href="/about">A propos de moi🙋🏽‍♀️🫱🏾‍🫲🏽</Link>
             </li>
             <li className="nav2">
-              <Link href="/projects">My Projects🗂️</Link>
+              <Link href="/projects">Mes projets🗂️</Link>
             </li>
             <li className="nav3">
-              <Link href="/customer-advice">Customer Advices⭐⭐⭐</Link>
+              <Link href="/customer-advice">Les avis clients⭐⭐⭐</Link>
             </li>
             <li className="nav3">
-              <Link href="/blog">My Blog📝</Link>
+              <Link href="/blog">Mon blog📝</Link>
             </li>
             <li className="nav3">
               <Link href="/contact">Contact📞</Link>

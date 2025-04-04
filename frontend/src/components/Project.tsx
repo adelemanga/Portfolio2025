@@ -1,47 +1,84 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// ⚡ Corrige le chemin ici (si fichier dans public/assets)
 const projects = [
   {
-    title: "Portfolio Interactif",
-    img: "https://i.imgur.com/DrcbKCv.png", // 🛠️ Chemin correct
+    title: "Mon premier portfolio",
+    img: "https://i.imgur.com/DrcbKCv.png",
     description:
       "Un portfolio interactif avec animations et transitions fluides.",
     link: "https://adelemanga-portfolio.netlify.app/",
-    technologies: ["React", "Node.js", "PostgreSQL", "Docker", "TypeGraphQL"],
+    technologies: ["React", "Node.js", "CSS", "JavaScript", "GitHub"],
   },
   {
-    title: "E-commerce Moderne",
+    title: "Amicale Sénior de Liebherr",
+    img: "https://i.imgur.com/pZq4RUz.png",
+    description: "Une app Worpress avec Laragon et Css customisé",
+    link: "https://test.amicale-seniors-liebherr.net/",
+    technologies: [
+      "WordPress",
+      "CSS",
+      "Plugins",
+      "Laragon",
+      "FTP",
+      "RapidDomaine",
+    ],
+  },
+  {
+    title: "Mon portfolio 2025",
     img: "https://i.imgur.com/i1xekKH.png",
-    description:
-      "Site e-commerce avec expérience utilisateur optimisée et paiement sécurisé.",
+    description: "Potfolio animé et fluide.",
     link: "#",
-    technologies: ["React", "Node.js", "PostgreSQL", "Nginx"],
+    technologies: [
+      "React",
+      "Node.js",
+      "SQLite",
+      "Next.js",
+      "Apollo",
+      "TypeORM",
+      "TypeScript",
+      "GitHub",
+    ],
   },
   {
-    title: "Application Mobile React Native",
-    img: "https://i.imgur.com/7oLVQV8.png",
-    description:
-      "Une app mobile avec React Native et Firebase pour le backend.",
-    link: "#",
-    technologies: ["React Native", "Firebase", "Docker"],
-  },
-  {
-    title: "Portfolio Interactif",
-    img: "https://i.imgur.com/L6sUWRE.png", // 🛠️ Chemin correct
-    description:
-      "Un portfolio interactif avec animations et transitions fluides.",
+    title: "Aéroport de Colmar",
+    img: "https://i.imgur.com/L6sUWRE.png",
+    description: "Refonte du site de l'aéroport + Maquette",
     link: "https://adelemanga-portfolio.netlify.app/",
-    technologies: ["React", "Node.js", "TypeGraphQL", "Docker"],
+    technologies: ["WordPress", "CSS", "Plugins", "Laragon"],
   },
   {
-    title: "E-commerce Moderne",
+    title: "Application de service de Football",
+    img: "https://i.imgur.com/7oLVQV8.png",
+    description: "Une app pour mon ami qui souhaite donner des cours.",
+    link: "#",
+    technologies: [
+      "React",
+      "Node.js",
+      "SQLite",
+      "Next.js",
+      "Apollo",
+      "TypeORM",
+      "TypeScript",
+      "GitHub",
+    ],
+  },
+  {
+    title: "Un restaurant à mon image",
     img: "https://i.imgur.com/ubNB7Fh.png",
     description:
       "Site e-commerce avec expérience utilisateur optimisée et paiement sécurisé.",
     link: "#",
-    technologies: ["React", "Node.js", "PostgreSQL", "Docker", "GitHub"],
+    technologies: [
+      "React",
+      "Node.js",
+      "SQLite",
+      "Next.js",
+      "Apollo",
+      "TypeORM",
+      "TypeScript",
+      "GitHub",
+    ],
   },
   {
     title: "Application Mobile React Native",
@@ -49,37 +86,63 @@ const projects = [
     description:
       "Une app mobile avec React Native et Firebase pour le backend.",
     link: "#",
-    technologies: ["React Native", "Firebase", "Docker"],
+    technologies: [
+      "GitHub",
+      "Docker",
+      "Apollo",
+      "TypeORM",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Nginx",
+      "TypeGraphQL",
+    ],
   },
   {
-    title: "E-commerce Moderne",
+    title: "Application pour administrer et visualiser les oeuvres d'arts",
     img: "https://i.imgur.com/SQdTHLH.png",
     description:
-      "Site e-commerce avec expérience utilisateur optimisée et paiement sécurisé.",
+      "Application pour administrer et visualiser les oeuvres d'arts",
     link: "#",
-    technologies: ["React", "Node.js", "PostgreSQL", "Docker", "GitHub"],
-  },
-  {
-    title: "Application Mobile React Native",
-    img: "https://i.imgur.com/pZq4RUz.png",
-    description:
-      "Une app mobile avec React Native et Firebase pour le backend.",
-    link: "#",
-    technologies: ["React Native", "Firebase", "Docker"],
+    technologies: [
+      "React",
+      "Node.js",
+      "GitHub",
+      "JavaScript",
+      "Postman",
+      "MySQL",
+      "JavaScript",
+    ],
   },
 ];
 
 function Projects() {
   const getTechIcons = (techList: string[]) => {
     const techIcons: { [key: string]: string } = {
-      React: "⚛️",
-      "Node.js": "🟩",
-      PostgreSQL: "🟪",
-      Docker: "🐳",
-      Firebase: "🔥",
-      TypeGraphQL: "🔷",
-      GitHub: "🐙",
-      Nginx: "🖥️",
+      React: "⚛️React",
+      "Node.js": "❇️Node.js",
+      PostgreSQL: "🟪PostgreSQL",
+      Docker: "🐳Docker",
+      TypeGraphQL: "🔷TypeGraphQL",
+      GitHub: "🐙GitHub",
+      Nginx: "🖥️Nginx",
+      "Next.js": "⏭️Next.js",
+      Apollo: "🚀Apollo",
+      "Tailwind CSS": "🌬️Tailwind CSS",
+      SCSS: "🎨SCSS",
+      CSS: "🎀CSS",
+      SQLite: "💾SQLite",
+      JavaScript: "🟨JavaScript",
+      TypeScript: "🔵TypeScript",
+      Postman: "🔵Postman",
+      MySQL: "🐬MySQL",
+      TypeORM: "📦TypeORM",
+      Vite: "⚡Vite",
+      WordPress: "📝WordPress",
+      Plugins: "🧩Plugins",
+      Laragon: "🧰Laragon",
+      FTP: "📡FTP",
+      RapidDomaine: "🌐RapidDomaine",
     };
 
     return techList.map((tech) => techIcons[tech] || "🔧").join(" ");
@@ -110,7 +173,7 @@ function Projects() {
                 {getTechIcons(project.technologies)}
               </p>
 
-              <a href={project.link} className="project-link">
+              <a href={project.link} target="-blank" className="project-link">
                 Voir le projet
               </a>
             </div>
