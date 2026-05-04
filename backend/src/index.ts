@@ -9,7 +9,7 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import { db } from "./db";
 import schemaPromise from "./schema";
 
-const port = process.env.SERVER_PORT || 4003;
+const port = process.env.PORT || 4003;
 
 const allowedOrigins =
   process.env.CORS_ALLOWED_ORIGINS || "http://localhost:3000";
