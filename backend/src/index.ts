@@ -26,6 +26,8 @@ schemaPromise.then(async (schema) => {
   const context = async ({ req, res }: any) => ({ req, res });
   const expressMW = expressMiddleware(server, { context });
   app.use(express.json(), expressMW);
-  await new Promise<void>((resolve) => httpServer.listen({ port }, resolve));
+  await new Promise<void>((resolve) =>
+    httpServer.listen({ port, host: "0.0.0.0" }, resolve)
+  );
   console.log(`🚀 Server ready at http://localhost:${port}/graphql`);
 });
