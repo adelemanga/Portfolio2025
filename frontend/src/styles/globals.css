@@ -335,6 +335,7 @@ form input[type="text"] {
   border: 1px solid #7db8e0;
   border-radius: 5px;
   margin-left: 0rem;
+  box-shadow: 3px 3px #7db8e0, -1em 0 0.4em #7db8e0;
   background-color: white;
   outline: none;
 }
@@ -637,12 +638,21 @@ h2 {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 8px;
+  padding: 10px 14px;
   margin-top: 5px;
-  font-size: 14px;
+  font-size: 15px;
   border: 1px solid #7db8e0;
-  border-radius: 4px;
+  border-radius: 6px;
   outline: none;
+  background-color: #f9fcfe;
+  box-shadow: 3px 3px #7db8e0, -1em 0 0.4em #7db8e0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #58a6d6;
+  box-shadow: 0 0 0 3px rgba(125, 184, 224, 0.4);
 }
 
 button {
@@ -882,7 +892,7 @@ footer a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 124vh;
+  height: 65.5rem;
   object-fit: cover;
   z-index: -1;
 }
@@ -920,7 +930,7 @@ Iframe.video-background {
 h1 {
   font-size: 3rem;
   font-weight: bold;
-  font-family: montserra;
+  font-family: "montserra";
 }
 
 .video-container {
@@ -1412,28 +1422,22 @@ div.avis {
   padding: 10px;
 }
 
-
 .nav0 a {
   color: white;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  transition: 
-    color 0.3s ease,
-    text-shadow 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
   position: relative;
   text-transform: uppercase;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .nav0 a:hover {
-  color: #d9f0ff;
-  text-shadow: 0 0 5px #d9f0ff, 0 0 10px #d9f0ff;
+  color: #ffffff;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff;
 }
-
-
-
-
 
 /* Drawer styles */
 .drawer-button {
@@ -1513,22 +1517,21 @@ button.drawer-button {
   display: none;
 }
 
-/* Affichage mobile */
 @media (max-width: 768px) {
   .main {
     margin-left: 0.5rem;
   }
 
   .nav0 {
-    display: none; /* Cache le menu classique */
+    display: none;
   }
 
   .drawer-button {
-    display: block; /* Affiche le bouton menu burger */
+    display: block;
   }
 
   .drawer {
-    display: block; /* Permet le fonctionnement du drawer */
+    display: block;
   }
 
   .overlay {
