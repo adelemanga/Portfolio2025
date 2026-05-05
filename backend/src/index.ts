@@ -25,7 +25,7 @@ schemaPromise.then(async (schema) => {
   app.use(cors<cors.CorsRequest>(corsConfig));
   const context = async ({ req, res }: any) => ({ req, res });
   const expressMW = expressMiddleware(server, { context });
-  app.use(express.json(), expressMW);
+  app.use("/graphql", express.json(), expressMW);
   await new Promise<void>((resolve) =>
     httpServer.listen({ port, host: "0.0.0.0" }, resolve)
   );
