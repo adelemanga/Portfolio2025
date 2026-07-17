@@ -104,7 +104,11 @@ Portfolio2025/
 │   └── tsconfig.json
 ├── docker-compose.yml
 ├── docker-compose.prod.yml
+├── docker-compose.vps.yml
 ├── Caddyfile
+├── deploy/
+│   └── caddy/
+│       └── portfolio2025.Caddyfile
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js
@@ -241,7 +245,7 @@ Run both services with:
 docker compose up --build
 ```
 
-For a production server, the repository also includes `docker-compose.prod.yml` and a `Caddyfile`.
+For a standalone production server, the repository also includes `docker-compose.prod.yml` and a `Caddyfile`.
 
 The production stack runs:
 
@@ -259,6 +263,28 @@ docker compose --env-file .env.production -f docker-compose.prod.yml up -d --bui
 ```
 
 The default production domain in the example is `adelewebstudio.fr`.
+
+For deployment on the same server as an existing shared Caddy proxy, use `docker-compose.vps.yml` instead. This file does not bind ports `80` or `443`; it joins the external Docker network named `web` and expects the central Caddy instance to route traffic.
+
+The Caddy route for the shared proxy is provided in:
+
+```text
+deploy/caddy/portfolio2025.Caddyfile
+```
+
+It routes:
+
+- `adelewebstudio.fr` to `portfolio2025_frontend:3000`
+- `/graphql` to `portfolio2025_backend:4003`
+- `www.adelewebstudio.fr` to `adelewebstudio.fr`
+
+Example VPS command:
+
+```bash
+cp .env.production.example .env.production
+docker network create web || true
+docker compose --env-file .env.production -f docker-compose.vps.yml up -d --build
+```
 
 ## Available Scripts
 

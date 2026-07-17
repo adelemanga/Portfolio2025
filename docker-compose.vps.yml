@@ -1,0 +1,43 @@
+name: ${COMPOSE_PROJECT_NAME:-portfolio2025}
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: ${SITE_SLUG:-portfolio2025}_backend
+    restart: unless-stopped
+    environment:
+      PORT: 4003
+      CORS_ALLOWED_ORIGINS: ${PUBLIC_ORIGIN}
+    expose:
+      - "4003"
+    volumes:
+      - ./backend/countries.sqlite:/app/countries.sqlite
+    networks:
+      - internal
+      - web
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+      args:
+        NEXT_PUBLIC_GRAPHQL_API_URL: /graphql
+    container_name: ${SITE_SLUG:-portfolio2025}_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    expose:
+      - "3000"
+    networks:
+      - internal
+      - web
+
+networks:
+  internal:
+    name: ${SITE_SLUG:-portfolio2025}_internal
+    driver: bridge
+    internal: true
+  web:
+    external: true

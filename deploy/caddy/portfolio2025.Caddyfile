@@ -1,0 +1,21 @@
+www.adelewebstudio.fr {
+  redir https://adelewebstudio.fr{uri} permanent
+}
+
+adelewebstudio.fr {
+  encode zstd gzip
+
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+  }
+
+  handle /graphql* {
+    reverse_proxy portfolio2025_backend:4003
+  }
+
+  handle {
+    reverse_proxy portfolio2025_frontend:3000
+  }
+}
