@@ -112,7 +112,6 @@ Portfolio2025/
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js
-├── vercel.json
 └── .env.example
 ```
 
@@ -292,7 +291,6 @@ docker compose --env-file .env.production -f docker-compose.vps.yml up -d --buil
 
 | Script | Command | Notes |
 | --- | --- | --- |
-| `vercel-build` | `npm --prefix frontend ci --include=dev && npm --prefix frontend run build` | Builds the frontend application for Vercel. |
 | `test` | `echo "Error: no test specified" && exit 1` | Placeholder script currently configured in the root `package.json`. |
 
 ### Frontend
@@ -301,7 +299,6 @@ docker compose --env-file .env.production -f docker-compose.vps.yml up -d --buil
 | --- | --- |
 | `dev` | `next dev` |
 | `build` | `next build` |
-| `vercel-build` | `next build` |
 | `start` | `next start` |
 | `lint` | `next lint` |
 | `codegen` | `graphql-codegen --config codegen.yml --watch` |
