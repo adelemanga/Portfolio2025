@@ -4,3 +4,4 @@ img/node_modules
 .vercel
 .next
 frontend/.next
+backend/dist

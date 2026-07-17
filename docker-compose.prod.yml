@@ -1,0 +1,45 @@
+services:
+  proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - SITE_DOMAIN=${SITE_DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - frontend
+      - backend
+
+  frontend:
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+      args:
+        NEXT_PUBLIC_GRAPHQL_API_URL: /graphql
+    expose:
+      - "3000"
+    depends_on:
+      - backend
+
+  backend:
+    restart: unless-stopped
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    environment:
+      - PORT=4003
+      - CORS_ALLOWED_ORIGINS=${PUBLIC_ORIGIN}
+    expose:
+      - "4003"
+    volumes:
+      - ./backend/countries.sqlite:/app/countries.sqlite
+
+volumes:
+  caddy_data:
+  caddy_config:

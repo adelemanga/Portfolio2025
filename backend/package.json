@@ -4,10 +4,12 @@
   "description": "GraphQL API for the Portfolio2025 application.",
   "main": "src/index.ts",
   "scripts": {
+    "build": "tsc",
     "dev": "ts-node-dev src/index.ts",
     "resetDB": "ts-node-dev src/resetDb.ts",
     "seed": "ts-node src/seed.ts",
-    "start": "ts-node-dev --poll ./src/index.ts"
+    "start": "ts-node-dev --poll ./src/index.ts",
+    "start:prod": "node dist/index.js"
   },
   "keywords": [],
   "author": "Adèle Manga",

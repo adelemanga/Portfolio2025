@@ -1,0 +1,11 @@
+{$SITE_DOMAIN} {
+  encode gzip zstd
+
+  handle /graphql* {
+    reverse_proxy backend:4003
+  }
+
+  handle {
+    reverse_proxy frontend:3000
+  }
+}

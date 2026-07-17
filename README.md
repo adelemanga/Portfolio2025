@@ -85,6 +85,7 @@ Portfolio2025/
 │   │   └── utils.ts
 │   ├── countries.sqlite
 │   ├── Dockerfile
+│   ├── Dockerfile.prod
 │   ├── package.json
 │   └── tsconfig.json
 ├── frontend/
@@ -96,11 +97,14 @@ Portfolio2025/
 │   │   └── asset/
 │   ├── public/
 │   ├── Dockerfile
+│   ├── Dockerfile.prod
 │   ├── codegen.yml
 │   ├── next.config.js
 │   ├── package.json
 │   └── tsconfig.json
 ├── docker-compose.yml
+├── docker-compose.prod.yml
+├── Caddyfile
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js
@@ -168,6 +172,13 @@ PORT=4003
 CORS_ALLOWED_ORIGINS=http://localhost:3000
 ```
 
+The production example `.env.production.example` contains:
+
+```env
+SITE_DOMAIN=adelewebstudio.fr
+PUBLIC_ORIGIN=https://adelewebstudio.fr
+```
+
 The backend code also reads the following variables:
 
 | Variable | Used in | Purpose |
@@ -230,6 +241,25 @@ Run both services with:
 docker compose up --build
 ```
 
+For a production server, the repository also includes `docker-compose.prod.yml` and a `Caddyfile`.
+
+The production stack runs:
+
+- Caddy as the reverse proxy with automatic HTTPS.
+- The Next.js frontend on the internal `frontend:3000` service.
+- The GraphQL backend on the internal `backend:4003` service.
+- `/graphql` proxied to the backend.
+- All other routes proxied to the frontend.
+
+Example production setup:
+
+```bash
+cp .env.production.example .env.production
+docker compose --env-file .env.production -f docker-compose.prod.yml up -d --build
+```
+
+The default production domain in the example is `adelewebstudio.fr`.
+
 ## Available Scripts
 
 ### Root
@@ -245,6 +275,7 @@ docker compose up --build
 | --- | --- |
 | `dev` | `next dev` |
 | `build` | `next build` |
+| `vercel-build` | `next build` |
 | `start` | `next start` |
 | `lint` | `next lint` |
 | `codegen` | `graphql-codegen --config codegen.yml --watch` |
@@ -254,9 +285,11 @@ docker compose up --build
 | Script | Command |
 | --- | --- |
 | `dev` | `ts-node-dev src/index.ts` |
+| `build` | `tsc` |
 | `resetDB` | `ts-node-dev src/resetDb.ts` |
 | `seed` | `ts-node src/seed.ts` |
 | `start` | `ts-node-dev --poll ./src/index.ts` |
+| `start:prod` | `node dist/index.js` |
 
 ## Security Notes
 
