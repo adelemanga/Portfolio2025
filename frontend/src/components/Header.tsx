@@ -9,7 +9,7 @@ export default function Header() {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
       if (window.innerWidth > 768) {
-        setIsOpen(false); // Ferme le menu si on agrandit l'écran
+        setIsOpen(false);
       }
     };
 

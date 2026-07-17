@@ -167,7 +167,6 @@ function Projects() {
               <h3 className="project-title">{project.title}</h3>
               <p className="project-description">{project.description}</p>
 
-              {/* Affichage des technologies sous forme d'icônes */}
               <p className="project-technologies">
                 <strong>Technologies utilisées:</strong>{" "}
                 {getTechIcons(project.technologies)}

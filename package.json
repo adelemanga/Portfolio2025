@@ -1,14 +1,14 @@
 {
-  "name": "adele-food-app",
+  "name": "portfolio2025",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Adèle Manga",
   "license": "ISC",
-  "description": "",
+  "description": "Full-stack developer portfolio with a Next.js frontend and GraphQL backend.",
   "dependencies": {
     "antd": "^5.24.3",
     "axios": "^1.8.1",

@@ -144,11 +144,6 @@ a {
   color: #3498db;
 }
 
-p.foodName {
-  font-size: 25px;
-  text-align: center;
-}
-
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -159,26 +154,6 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 20px 0;
-}
-
-.img-food {
-  margin-left: 5rem;
-}
-
-img.img-food1 {
-  width: 50rem;
-  margin-left: -1.5rem;
-  padding: 50px;
-  transition: transform 0.2s;
-
-  margin: 0 auto;
-}
-
-img.img-food1:hover {
-  -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Safari 3-8 */
-  transform: scale(1.5);
-  border-radius: 15px;
 }
 
 img {
@@ -211,36 +186,6 @@ p.text {
   color: black;
   font-size: 20px;
   font-weight: lighter;
-}
-
-div.food-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
-  gap: 0px; /* Espacement entre les images */
-  justify-content: center;
-  padding: 20px;
-  margin-left: 3.5rem;
-}
-
-li.food-details {
-  /* padding: 15px 20px; */
-  margin-bottom: 10px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  justify-content: space-around;
-  /* align-items: center; */
-  transition: background-color 0.3s ease;
-  text-align: center;
-  width: 80rem;
-  margin-left: 5rem;
-
-  font-size: 25px;
-  font-family: "Arial", sans-serif;
-}
-
-li.food-details:hover {
-  background-color: rgb(240, 177, 207);
 }
 
 ul.ul {
@@ -527,17 +472,6 @@ article h2 {
   background-color: #0056b3; /* Couleur au survol */
 }
 
-/* Image cliquable */
-.img-food {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.img-food:hover {
-  opacity: 0.7;
-}
-
 .img-home2 {
   cursor: pointer;
 }
@@ -769,10 +703,6 @@ footer a:hover {
     margin-left: 2.5rem;
   }
 
-  div.food-list {
-    display: table-column;
-  }
-
   .search-input {
     margin-left: 5rem;
   }
@@ -789,10 +719,6 @@ footer a:hover {
     width: 40rem;
   }
 
-  p.foodName {
-    font-size: 26px;
-    font-weight: bold;
-  }
 }
 
 .advice-list {
@@ -1280,11 +1206,6 @@ div.avis {
     margin-left: 1rem;
   }
 
-  div.food-list {
-    display: block;
-    text-align: center;
-  }
-
   .search-input {
     width: 80%;
     margin: 0 auto;
@@ -1308,13 +1229,6 @@ div.avis {
     max-width: 300px;
     display: block;
     margin: 0 auto;
-  }
-
-  /* Ajustement du texte */
-  p.foodName {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
   }
 
   /* Ajustement du carrousel */

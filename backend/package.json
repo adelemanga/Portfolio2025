@@ -1,7 +1,7 @@
 {
-  "name": "countryapi",
+  "name": "portfolio2025-backend",
   "version": "1.0.0",
-  "description": "To install deps : ```sh npm i ```",
+  "description": "GraphQL API for the Portfolio2025 application.",
   "main": "src/index.ts",
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
@@ -10,7 +10,7 @@
     "start": "ts-node-dev --poll ./src/index.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Adèle Manga",
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.11.3",

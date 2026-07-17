@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AboutMe from "@/components/About";
 
-export default function Food() {
+export default function AboutPage() {
   return (
     <ApolloProvider client={client}>
       <div>

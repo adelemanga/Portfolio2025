@@ -7,7 +7,7 @@ function Advice() {
     name: "",
     lastname: "",
     message: "",
-    imgUrl: "", // Correction ici (remplacer "ilmgUrl" par "imgUrl")
+    imgUrl: "",
     rating: 0,
     title: "",
   });
@@ -73,7 +73,7 @@ function Advice() {
     // Mettre à jour formData avec l'URL de l'image téléchargée
     const formDataWithImg = {
       ...formData,
-      imgUrl: imageURL || "", // Ajoutez l'URL de l'image dans formData
+      imgUrl: imageURL || "",
     };
 
     try {
@@ -83,11 +83,11 @@ function Advice() {
         name: "",
         lastname: "",
         message: "",
-        imgUrl: "", // Réinitialisez ici également
+        imgUrl: "",
         rating: 0,
         title: "",
       });
-      setImageURL(null); // Réinitialisez l'URL de l'image
+      setImageURL(null);
     } catch (err) {
       console.error("Erreur lors de l'envoi :", err);
     }
