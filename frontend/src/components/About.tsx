@@ -1,20 +1,20 @@
-import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "@/i18n/useTranslation";
+import { getLocalizedPath } from "@/i18n/routes";
 
 export default function AboutMe() {
+  const { locale, t } = useTranslation();
+
   return (
     <div className="portfolio">
-      {/* Arrière-plan flou */}
       <div className="blur-background"></div>
 
-      {/* Card de présentation */}
       <div className="profile-card">
-        {/* Image de profil avec cadre */}
         <div className="image-container">
           <div className="image-border">
             <img
               src="https://i.imgur.com/1LdqBMP.jpeg"
-              alt="Votre Nom"
+              alt={t.about.imageAlt}
               width={180}
               height={180}
               className="profile-img"
@@ -22,22 +22,26 @@ export default function AboutMe() {
           </div>
         </div>
 
-        {/* Texte de présentation */}
         <div className="text-content">
           <h1 className="title">
-            Salut, moi c'est <span>Adèle Manga</span> 👋
+            {t.about.title} <span>Adèle Manga</span>
           </h1>
-          <p className="subtitle">
-            Développeuse Web | Passionnée par la tech et l'UI/UX
-          </p>
+          <p className="subtitle">{t.about.subtitle}</p>
 
-          {/* Boutons */}
           <div className="buttons">
-            <Link href="/projects" className="btn">
-              Voir Mes Projets
+            <Link
+              href={getLocalizedPath(locale, "/projects")}
+              locale={false}
+              className="btn"
+            >
+              {t.about.projectsCta}
             </Link>
-            <Link href="/contact" className="btn-outline">
-              Me Contacter
+            <Link
+              href={getLocalizedPath(locale, "/contact")}
+              locale={false}
+              className="btn-outline"
+            >
+              {t.about.contactCta}
             </Link>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useTranslation } from "@/i18n/useTranslation";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
@@ -12,6 +14,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             height="0"
             src="https://www.youtube.com/embed/kjlu9RRHcbE?autoplay=1&loop=1&playlist=kjlu9RRHcbE"
             allow="autoplay"
+            title={t.music.title}
             style={{ display: "none" }}
           ></iframe>
         )}
@@ -20,7 +23,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           className="button-music"
           onClick={() => setIsPlaying(!isPlaying)}
         >
-          {isPlaying ? "⏸️ Stop Music" : "▶️ Jouer"}
+          {isPlaying ? `⏸️ ${t.music.stop}` : `▶️ ${t.music.play}`}
         </button>
       </div>
 

@@ -9,6 +9,7 @@ import {
 } from "type-graphql";
 import { db } from "../db";
 import { Contact } from "../entities/Contact";
+import { sendPortfolioContactEmail } from "../services/contactEmail";
 
 @InputType()
 class NewContactInput implements Partial<Contact> {
@@ -27,6 +28,19 @@ class NewContactInput implements Partial<Contact> {
 
 @Resolver(Contact)
 class ContactResolver {
+  private async notifyByEmail(contact: Contact) {
+    try {
+      await sendPortfolioContactEmail({
+        name: contact.name,
+        lastname: contact.lastname,
+        email: contact.email,
+        message: contact.message,
+      });
+    } catch (error) {
+      console.error("Portfolio contact email was not sent:", error);
+    }
+  }
+
   @Query(() => [Contact])
   async getAllContacts() {
     const contacts = await Contact.find();
@@ -42,6 +56,7 @@ class ContactResolver {
   ): Promise<Contact> {
     const contact = Contact.create({ name, lastname, email, message });
     await contact.save();
+    await this.notifyByEmail(contact);
     return contact;
   }
 
@@ -55,6 +70,7 @@ class ContactResolver {
     const resultFromSave = await Contact.save({
       ...newContactData,
     });
+    await this.notifyByEmail(resultFromSave);
 
     return resultFromSave;
   }

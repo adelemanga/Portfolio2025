@@ -1,31 +1,36 @@
 import { useQuery } from "@apollo/client";
 import { GET_ALL_ADVICES } from "../graphql/queries";
+import { useTranslation } from "@/i18n/useTranslation";
 
 function AdviceList() {
+  const { t } = useTranslation();
   const { loading, error, data } = useQuery(GET_ALL_ADVICES);
 
-  console.log("Données reçues :", data);
-  if (loading) return <p>Chargement...</p>;
-  if (error) return <p>Erreur : {error.message}</p>;
+  if (loading) return <p>{t.reviews.loadingList}</p>;
+  if (error) return <p>{t.reviews.listError} : {error.message}</p>;
 
   if (!data || !data.getAllAvis || data.getAllAvis.length === 0) {
-    return <p>Aucun avis pour le moment.</p>;
+    return <p>{t.reviews.empty}</p>;
   }
 
   return (
     <div className="avis">
-      <h1>Avis des utilisateurs</h1>
+      <h1 className="page-title">{t.reviews.listTitle}</h1>
 
       {data.getAllAvis.map((advice: any) => (
         <div key={advice.id} className="advice-card">
           <h3>{advice.title}</h3>
 
           <p>
-            <strong>
+            <strong>{t.reviews.authorLabel}:</strong>{" "}
+            <span>
               {advice.name} {advice.lastname}
-            </strong>
+            </span>
           </p>
-          <p>Note : {"⭐".repeat(advice.rating)}</p>
+          <p>
+            <strong>{t.reviews.ratingLabel}:</strong>{" "}
+            {"⭐".repeat(advice.rating)}
+          </p>
 
           <p>{advice.message}</p>
         </div>

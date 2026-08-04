@@ -1,19 +1,14 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "@/i18n/useTranslation";
 
 const projects = [
   {
-    title: "Mon premier portfolio",
     img: "https://i.imgur.com/DrcbKCv.png",
-    description:
-      "Un portfolio interactif avec animations et transitions fluides.",
     link: "https://adelemanga-portfolio.netlify.app/",
     technologies: ["React", "Node.js", "CSS", "JavaScript", "GitHub"],
   },
   {
-    title: "Amicale Sénior de Liebherr",
     img: "https://i.imgur.com/pZq4RUz.png",
-    description: "Une app Worpress avec Laragon et Css customisé",
     link: "https://test.amicale-seniors-liebherr.net/",
     technologies: [
       "WordPress",
@@ -25,9 +20,7 @@ const projects = [
     ],
   },
   {
-    title: "Mon portfolio 2025",
     img: "https://i.imgur.com/i1xekKH.png",
-    description: "Potfolio animé et fluide.",
     link: "#",
     technologies: [
       "React",
@@ -41,16 +34,12 @@ const projects = [
     ],
   },
   {
-    title: "Aéroport de Colmar",
     img: "https://i.imgur.com/L6sUWRE.png",
-    description: "Refonte du site de l'aéroport + Maquette",
     link: "https://adelemanga-portfolio.netlify.app/",
-    technologies: ["WordPress", "CSS", "Plugins", "Laragon"],
+    technologies: ["WordPress", "CSS", "Plugins", "Laragon", "Figma"],
   },
   {
-    title: "Application de service de Football",
     img: "https://i.imgur.com/7oLVQV8.png",
-    description: "Une app pour mon ami qui souhaite donner des cours.",
     link: "#",
     technologies: [
       "React",
@@ -64,10 +53,7 @@ const projects = [
     ],
   },
   {
-    title: "Un restaurant à mon image",
     img: "https://i.imgur.com/ubNB7Fh.png",
-    description:
-      "Site e-commerce avec expérience utilisateur optimisée et paiement sécurisé.",
     link: "#",
     technologies: [
       "React",
@@ -81,10 +67,7 @@ const projects = [
     ],
   },
   {
-    title: "Application Mobile React Native",
     img: "https://i.imgur.com/PjXDVgT.png",
-    description:
-      "Une app mobile avec React Native et Firebase pour le backend.",
     link: "#",
     technologies: [
       "GitHub",
@@ -99,10 +82,7 @@ const projects = [
     ],
   },
   {
-    title: "Application pour administrer et visualiser les oeuvres d'arts",
     img: "https://i.imgur.com/SQdTHLH.png",
-    description:
-      "Application pour administrer et visualiser les oeuvres d'arts",
     link: "#",
     technologies: [
       "React",
@@ -117,6 +97,8 @@ const projects = [
 ];
 
 function Projects() {
+  const { t } = useTranslation();
+
   const getTechIcons = (techList: string[]) => {
     const techIcons: { [key: string]: string } = {
       React: "⚛️React",
@@ -129,7 +111,6 @@ function Projects() {
       "Next.js": "⏭️Next.js",
       Apollo: "🚀Apollo",
       "Tailwind CSS": "🌬️Tailwind CSS",
-      SCSS: "🎨SCSS",
       CSS: "🎀CSS",
       SQLite: "💾SQLite",
       JavaScript: "🟨JavaScript",
@@ -137,47 +118,58 @@ function Projects() {
       Postman: "🔵Postman",
       MySQL: "🐬MySQL",
       TypeORM: "📦TypeORM",
-      Vite: "⚡Vite",
       WordPress: "📝WordPress",
       Plugins: "🧩Plugins",
       Laragon: "🧰Laragon",
       FTP: "📡FTP",
       RapidDomaine: "🌐RapidDomaine",
+      Figma: "🎨Figma",
     };
 
-    return techList.map((tech) => techIcons[tech] || "🔧").join(" ");
+    return techList.map((tech) => techIcons[tech] || tech).join(" ");
   };
 
   return (
     <div className="projects-container">
-      <h2 className="projects-title">🚀 Mes Projets</h2>
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            className="project-card"
-            whileHover={{ scale: 1.05 }}
-          >
-            <img
-              src={project.img}
-              alt={project.title}
-              className="project-img"
-            />
-            <div className="project-content">
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
+      <div className="page-container projects-inner">
+        <h2 className="projects-title">{t.projects.pageTitle}</h2>
+        <div className="projects-grid">
+          {projects.map((project, index) => {
+            const content = t.projects.items[index];
 
-              <p className="project-technologies">
-                <strong>Technologies utilisées:</strong>{" "}
-                {getTechIcons(project.technologies)}
-              </p>
+            return (
+              <motion.div
+                key={content.title}
+                className="project-card"
+                whileHover={{ scale: 1.03 }}
+              >
+                <img
+                  src={project.img}
+                  alt={`${t.projects.imageAlt} - ${content.title}`}
+                  className="project-img"
+                />
+                <div className="project-content">
+                  <h3 className="project-title">{content.title}</h3>
+                  <p className="project-description">{content.description}</p>
 
-              <a href={project.link} target="-blank" className="project-link">
-                Voir le projet
-              </a>
-            </div>
-          </motion.div>
-        ))}
+                  <p className="project-technologies">
+                    <strong>{t.projects.technologiesLabel}:</strong>{" "}
+                    {getTechIcons(project.technologies)}
+                  </p>
+
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link"
+                  >
+                    {t.projects.projectCta}
+                  </a>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

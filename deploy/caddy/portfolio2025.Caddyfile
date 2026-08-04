@@ -1,8 +1,4 @@
-www.adelewebstudio.fr {
-  redir https://adelewebstudio.fr{uri} permanent
-}
-
-adelewebstudio.fr {
+portfolio.adelewebstudio.com {
   encode zstd gzip
 
   header {

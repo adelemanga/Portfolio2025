@@ -178,8 +178,8 @@ CORS_ALLOWED_ORIGINS=http://localhost:3000
 The production example `.env.production.example` contains:
 
 ```env
-SITE_DOMAIN=adelewebstudio.fr
-PUBLIC_ORIGIN=https://adelewebstudio.fr
+SITE_DOMAIN=portfolio.adelewebstudio.com
+PUBLIC_ORIGIN=https://portfolio.adelewebstudio.com
 ```
 
 The backend code also reads the following variables:
@@ -261,7 +261,7 @@ cp .env.production.example .env.production
 docker compose --env-file .env.production -f docker-compose.prod.yml up -d --build
 ```
 
-The default production domain in the example is `adelewebstudio.fr`.
+The default production domain in the example is `portfolio.adelewebstudio.com`.
 
 For deployment on the same server as an existing shared Caddy proxy, use `docker-compose.vps.yml` instead. This file does not bind ports `80` or `443`; it joins the external Docker network named `web` and expects the central Caddy instance to route traffic.
 
@@ -273,9 +273,8 @@ deploy/caddy/portfolio2025.Caddyfile
 
 It routes:
 
-- `adelewebstudio.fr` to `portfolio2025_frontend:3000`
+- `portfolio.adelewebstudio.com` to `portfolio2025_frontend:3000`
 - `/graphql` to `portfolio2025_backend:4003`
-- `www.adelewebstudio.fr` to `adelewebstudio.fr`
 
 Example VPS command:
 

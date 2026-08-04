@@ -1,8 +1,10 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { ADD_ADVICE } from "../graphql/mutations";
+import { useTranslation } from "@/i18n/useTranslation";
 
 function Advice() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     lastname: "",
@@ -41,7 +43,7 @@ function Advice() {
   const handleImageUpload = async (event: React.MouseEvent) => {
     event.preventDefault();
     if (!file) {
-      alert("Sélectionnez une image avant de l'envoyer.");
+      alert(t.reviews.uploadMissing);
       return;
     }
 
@@ -56,13 +58,13 @@ function Advice() {
       });
 
       if (!response.ok) {
-        throw new Error("Échec de l'upload de l'image.");
+        throw new Error(t.reviews.uploadError);
       }
 
       const data = await response.json();
       setImageURL(data.filename); // Ici, vous obtenez l'URL de l'image
     } catch (err) {
-      console.error("Erreur lors de l'upload :", err);
+      console.error("Review image upload failed:", err);
     }
   };
 
@@ -78,7 +80,7 @@ function Advice() {
 
     try {
       await addAvis({ variables: formDataWithImg });
-      setSuccessMessage("Votre message a été envoyé avec succès !");
+      setSuccessMessage(t.reviews.success);
       setFormData({
         name: "",
         lastname: "",
@@ -89,19 +91,17 @@ function Advice() {
       });
       setImageURL(null);
     } catch (err) {
-      console.error("Erreur lors de l'envoi :", err);
+      console.error("Review submission failed:", err);
     }
   };
 
   return (
-    <div className="contact1">
-      <h1>Laissez votre avis</h1>
+    <div className="contact1 contact-with-floating-image">
+      <h1 className="page-title">{t.reviews.formTitle}</h1>
 
-      <form className="avis" onSubmit={handleSubmit}>
-  
-        {/* Formulaire */}
+      <form className="avis contact-form-card" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Nom :</label>
+          <label htmlFor="name1">{t.reviews.name}</label>
           <input
             type="text"
             id="name1"
@@ -113,7 +113,7 @@ function Advice() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="lastname">Prénom :</label>
+          <label htmlFor="lastname">{t.reviews.lastname}</label>
           <input
             type="text"
             id="lastname"
@@ -125,7 +125,7 @@ function Advice() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="title">Titre de l'avis :</label>
+          <label htmlFor="title">{t.reviews.title}</label>
           <input
             type="text"
             id="title"
@@ -137,7 +137,7 @@ function Advice() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="rating">Évaluation :</label>
+          <label htmlFor="rating">{t.reviews.rating}</label>
           <div className="stars">
             {[1, 2, 3, 4, 5].map((value) => (
               <span
@@ -156,7 +156,7 @@ function Advice() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="message">Votre Avis :</label>
+          <label htmlFor="message">{t.reviews.message}</label>
           <textarea
             id="message"
             name="message"
@@ -167,17 +167,17 @@ function Advice() {
         </div>
 
         <button type="submit" disabled={loading}>
-          {loading ? "Envoi en cours..." : "Envoyer"}
+          {loading ? t.reviews.loading : t.reviews.submit}
         </button>
 
         {successMessage && <p className="success-message">{successMessage}</p>}
-        {error && <p className="error-message">Une erreur est survenue.</p>}
+        {error && <p className="error-message">{t.reviews.genericError}</p>}
       </form>
 
-      <div className="image-container1">
+      <div className="image-container1 form-floating-image">
         <img
           src="https://adelemanga-portfolio.netlify.app/static/media/girlme.0acab6167e7db055cb7a.png"
-          alt="Original Image"
+          alt={t.reviews.decorativeAlt}
           className="clone-1"
         />
       </div>
