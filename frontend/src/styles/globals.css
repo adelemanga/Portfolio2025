@@ -4144,3 +4144,143 @@ html body footer.portfolio-footer .portfolio-footer-cta {
 html body footer.portfolio-footer .portfolio-footer-bottom {
   border-top-color: rgba(217, 240, 255, 0.18);
 }
+
+/* Header brand lock: keep the logo visible at the top left on every viewport. */
+html body header.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  width: 100%;
+  min-height: 74px;
+  margin-left: 0 !important;
+  padding: 12px clamp(18px, 4vw, 54px);
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  z-index: 1400;
+}
+
+.header-brand {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.header-brand-logo {
+  display: block;
+  width: clamp(54px, 5.5vw, 78px);
+  height: clamp(54px, 5.5vw, 78px);
+  object-fit: contain;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 34px rgba(4, 49, 84, 0.16);
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    opacity 240ms ease;
+}
+
+.header-brand:hover .header-brand-logo,
+.header-brand:focus-visible .header-brand-logo {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px rgba(4, 49, 84, 0.22);
+}
+
+.header-brand:focus-visible {
+  border-radius: 18px;
+  outline: 3px solid rgba(217, 240, 255, 0.55);
+  outline-offset: 4px;
+}
+
+.header-brand-text {
+  color: #ffffff;
+  font-size: clamp(0.95rem, 0.45vw + 0.82rem, 1.08rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-shadow: 0 2px 14px rgba(4, 49, 84, 0.22);
+  white-space: nowrap;
+}
+
+.nav0 {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  min-width: 0;
+}
+
+.nav0 ul {
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  html body header.navbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 70px;
+    padding: 10px 14px !important;
+    justify-content: space-between !important;
+    pointer-events: none;
+  }
+
+  .header-brand {
+    max-width: calc(100% - 68px);
+  }
+
+  .header-brand-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+
+  .header-brand-text {
+    display: none;
+  }
+
+  .drawer-button {
+    top: max(13px, env(safe-area-inset-top)) !important;
+    right: 14px !important;
+  }
+}
+
+/* Keep the music control away from the header brand and drawer trigger. */
+html body .music-container {
+  top: 92px;
+  right: clamp(16px, 3vw, 28px);
+  left: auto;
+  z-index: 1300;
+}
+
+html body .button-music {
+  min-height: 40px;
+  padding: 9px 16px;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  html body .music-container {
+    top: calc(76px + env(safe-area-inset-top));
+    right: auto !important;
+    left: 14px !important;
+    max-width: min(240px, calc(100vw - 28px));
+  }
+
+  html body .button-music {
+    min-height: 38px;
+    padding: 8px 13px;
+    font-size: 0.8rem;
+  }
+}

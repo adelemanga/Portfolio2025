@@ -146,8 +146,27 @@ export default function Header() {
     </ul>
   );
 
+  const brand = (
+    <Link
+      href={getLocalizedPath(locale, "/")}
+      locale={false}
+      className="header-brand"
+      aria-label={t.footer.websiteLabel}
+      onClick={isMobile && isOpen ? closeDrawer : undefined}
+    >
+      <img
+        src="/images/adele-web-studio-logo-gradient.png"
+        alt="Adèle Web Studio"
+        className="header-brand-logo"
+      />
+      <span className="header-brand-text">Portfolio 2025</span>
+    </Link>
+  );
+
   return (
     <header className="navbar">
+      {brand}
+
       {!isMobile && (
         <nav className="nav0" aria-label={t.nav.mainNavigation}>
           {navList()}
