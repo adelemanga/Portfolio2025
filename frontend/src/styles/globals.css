@@ -4326,6 +4326,12 @@ html body .button-music {
   white-space: nowrap;
 }
 
+html body.portfolio-drawer-open .music-container {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+}
+
 @media (max-width: 768px) {
   html body .music-container {
     top: max(15px, calc(15px + env(safe-area-inset-top)));

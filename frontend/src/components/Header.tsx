@@ -44,9 +44,11 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
+    document.body.classList.toggle("portfolio-drawer-open", isOpen);
 
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("portfolio-drawer-open");
     };
   }, [isOpen]);
 
@@ -59,6 +61,7 @@ export default function Header() {
       if (event.key === "Escape") {
         setIsOpen(false);
         document.body.style.overflow = "";
+        document.body.classList.remove("portfolio-drawer-open");
       }
     };
 
@@ -72,12 +75,14 @@ export default function Header() {
   useEffect(() => {
     setIsOpen(false);
     document.body.style.overflow = "";
+    document.body.classList.remove("portfolio-drawer-open");
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [router.asPath]);
 
   const closeDrawer = () => {
     setIsOpen(false);
     document.body.style.overflow = "";
+    document.body.classList.remove("portfolio-drawer-open");
   };
 
   const navigateFromDrawer = (
