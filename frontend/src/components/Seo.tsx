@@ -1,19 +1,12 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Locale } from "@/i18n/translations";
 import { useTranslation } from "@/i18n/useTranslation";
-
-const siteUrl = "https://portfolio.adelewebstudio.com";
+import { getLocalizedUrl } from "@/seo/site";
 
 type SeoProps = {
   title: string;
   description?: string;
 };
-
-function getLocalizedUrl(locale: Locale, pathname: string) {
-  const cleanPath = pathname === "/" ? "" : pathname;
-  return `${siteUrl}/${locale}${cleanPath}`;
-}
 
 export default function Seo({ title, description }: SeoProps) {
   const router = useRouter();
