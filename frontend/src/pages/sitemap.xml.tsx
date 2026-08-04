@@ -24,34 +24,20 @@ function buildSitemap() {
 
   const localizedUrls = publicRoutes
     .flatMap((route) =>
-      locales.map((locale) => {
-        const alternateLinks = locales
-          .map(
-            (alternateLocale) =>
-              `    <xhtml:link rel="alternate" hreflang="${
-                alternateLocale === "fr" ? "fr-FR" : "en-US"
-              }" href="${escapeXml(getLocalizedUrl(alternateLocale, route.path))}" />`
-          )
-          .join("\n");
-
-        return `
+      locales.map(
+        (locale) => `
   <url>
     <loc>${escapeXml(getLocalizedUrl(locale, route.path))}</loc>
     <lastmod>${route.lastModified}</lastmod>
     <changefreq>${route.changeFrequency}</changefreq>
     <priority>${route.priority.toFixed(1)}</priority>
-${alternateLinks}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(
-      getLocalizedUrl("fr", route.path)
-    )}" />
-  </url>`;
-      })
+  </url>`
+      )
     )
     .join("");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">${rootUrl}${localizedUrls}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${rootUrl}${localizedUrls}
 </urlset>`;
 }
 
@@ -69,4 +55,3 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 export default function Sitemap() {
   return null;
 }
-
