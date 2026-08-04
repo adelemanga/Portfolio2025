@@ -4272,15 +4272,15 @@ html body .button-music {
 
 @media (max-width: 768px) {
   html body .music-container {
-    top: calc(76px + env(safe-area-inset-top));
+    top: max(17px, calc(17px + env(safe-area-inset-top)));
     right: auto !important;
-    left: 14px !important;
-    max-width: min(240px, calc(100vw - 28px));
+    left: 76px !important;
+    max-width: calc(100vw - 150px);
   }
 
   html body .button-music {
     min-height: 38px;
-    padding: 8px 13px;
-    font-size: 0.8rem;
+    padding: 8px 12px;
+    font-size: 0.78rem;
   }
 }

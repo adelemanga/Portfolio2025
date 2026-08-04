@@ -31,6 +31,12 @@ export default class PortfolioDocument extends Document<PortfolioDocumentProps> 
         <Head>
           <link rel="icon" type="image/png" href="/images/adele-web-studio-logo-gradient.png" />
           <link rel="apple-touch-icon" href="/images/adele-web-studio-logo-gradient.png" />
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                "body{display:block!important;visibility:visible!important;}",
+            }}
+          />
         </Head>
         <body>
           <Main />
