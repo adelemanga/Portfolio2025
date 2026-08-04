@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useState, type ChangeEvent, type MouseEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { localeLabels, locales, Locale } from "@/i18n/translations";
@@ -104,24 +104,28 @@ export default function Header() {
   const getNavLinkClassName = (href: string) =>
     router.pathname === href ? "active" : undefined;
 
+  const handleLocaleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    switchLocale(event.target.value as Locale);
+  };
+
   const languageSelector = (isDrawer = false) => (
     <div
-      className={`language-switcher ${isDrawer ? "drawer-language-switcher" : ""}`}
+      className={`language-select-wrap ${isDrawer ? "drawer-language-select-wrap" : ""}`}
       aria-label={t.nav.language}
     >
-      {locales.map((item) => (
-        <button
-          key={item}
-          type="button"
-          className={`language-option ${locale === item ? "active" : ""}`}
-          aria-label={localeLabels[item].ariaLabel}
-          aria-pressed={locale === item}
-          onClick={() => switchLocale(item)}
-        >
-          <span aria-hidden="true">{localeLabels[item].flag}</span>
-          <span>{isDrawer ? localeLabels[item].nativeName : localeLabels[item].code}</span>
-        </button>
-      ))}
+      <select
+        className="language-select"
+        value={locale}
+        onChange={handleLocaleChange}
+        aria-label={t.nav.language}
+      >
+        {locales.map((item) => (
+          <option key={item} value={item}>
+            {localeLabels[item].flag}{" "}
+            {isDrawer ? localeLabels[item].nativeName : localeLabels[item].code}
+          </option>
+        ))}
+      </select>
     </div>
   );
 
