@@ -4287,6 +4287,7 @@ html body .button-music {
 
 /* Projects page restoration: original blue showcase layout. */
 html body .projects-container {
+  --projects-showcase-version: "restored-20260805";
   width: 100%;
   max-width: 100%;
   min-height: 100dvh;
